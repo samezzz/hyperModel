@@ -2,11 +2,15 @@ import utils
 import shared
 
 def save():
-    shared.model.save_pretrained("../outputs/final_model/hyper_model") # Local saving
-    # Merge to 16bit
-    shared.model.save_pretrained_merged("model", utils.tokenizer, save_method = "merged_16bit",)
+    # Save to 16bit GGUF
+    shared.model.save_pretrained_gguf("model", utils.tokenizer, quantization_method = "f16")
 
 
+
+if False: shared.model.save_pretrained("../outputs/final_model/hyper_model") # Local saving
+
+# Merge to 16bit
+if False: shared.model.save_pretrained_merged("model", utils.tokenizer, save_method = "merged_16bit",)
 
 # Merge to 4bit
 if False: model.save_pretrained_merged("model", tokenizer, save_method = "merged_4bit",)
@@ -17,8 +21,6 @@ if False: model.save_pretrained_merged("model", tokenizer, save_method = "lora",
 # Save to 8bit Q8_0
 if False: model.save_pretrained_gguf("model", tokenizer,)
 
-# Save to 16bit GGUF
-if False: model.save_pretrained_gguf("model", tokenizer, quantization_method = "f16")
 
 # Save to q4_k_m GGUF
 if False: model.save_pretrained_gguf("model", tokenizer, quantization_method = "q4_k_m")

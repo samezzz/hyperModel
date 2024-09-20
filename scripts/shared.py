@@ -12,10 +12,12 @@ fourbit_models = [
     "unsloth/gemma-2b-bnb-4bit",
     "unsloth/gemma-2b-it-bnb-4bit",
     "unsloth/llama-3-8b-bnb-4bit",
+    "unsloth/tinyllama-bnb-4bit",
+    "unsloth/tinyllama-chat-bnb-4bit",
 ]
 
 model, utils.tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "unsloth/llama-3-8b-bnb-4bit", # Llama-3 70b also works (just change the model name)
+    model_name = "unsloth/tinyllama-chat-bnb-4bit", 
     max_seq_length = utils.max_seq_length,
     dtype = utils.dtype,
     load_in_4bit = utils.load_in_4bit,
